@@ -1,0 +1,11 @@
+Package: keycloakAuthR
+Title: Keycloak Authentication for R and Shiny
+Version: 0.1.0
+Authors@R: 
+    person("Andrés Felipe", "Quintero Moreano", , "afquinteromoreano@gmail.com", role = c("aut", "cre"),
+           comment = c())
+Description: Wrapper for working with Keycloak Authentication.
+License:
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
