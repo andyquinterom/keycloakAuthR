@@ -4,7 +4,7 @@
 \alias{keycloak_shiny_login_server}
 \title{Módulo de Shiny para iniciar sesión con API de AIS}
 \usage{
-keycloak_shiny_login_server(config, auto_redirect = TRUE)
+keycloak_shiny_login_server(config, redirect_uri, auto_redirect = TRUE)
 }
 \description{
 Este módulo de Shiny hace varias cosas:

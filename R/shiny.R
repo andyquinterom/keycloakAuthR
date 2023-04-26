@@ -52,7 +52,7 @@ remove_bearer <- function(token) {
 #' @importFrom promises `%...>%`
 #' @importFrom promises `%...!%`
 #' @export
-keycloak_shiny_login_server <- function(config, auto_redirect = TRUE) {
+keycloak_shiny_login_server <- function(config, redirect_uri, auto_redirect = TRUE) {
 
   shiny::moduleServer("keycloak_login", function(input, output, session) {
 
@@ -77,11 +77,11 @@ keycloak_shiny_login_server <- function(config, auto_redirect = TRUE) {
           if (isTruthy(query$code)) {
             token_resp <- promises::then(
               promises::future_promise(
-                fetch_keycloak_access_token(query$code, "http://localhost:3838", config)
+                fetch_keycloak_access_token(query$code, redirect_uri, config)
               ),
               onRejected = function(...) {
                 if (auto_redirect) {
-                  open_login_url(config, "http://localhost:3838")
+                  open_login_url(config, redirect_uri)
                 }
               }
             )
@@ -97,7 +97,7 @@ keycloak_shiny_login_server <- function(config, auto_redirect = TRUE) {
             )
 
           } else if (auto_redirect) {
-            open_login_url(config, "http://localhost:3838")
+            open_login_url(config, redirect_uri)
           }
         }
       )

@@ -14,7 +14,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
 
-  token <- keycloak_shiny_login_server(config, auto_redirect = FALSE)
+  token <- keycloak_shiny_login_server(config, "http://localhost:3838", auto_redirect = FALSE)
 
   output$secret_message <- renderUI({
     if (token()$is_valid()) {
